@@ -1,0 +1,56 @@
+﻿@model MvcMovie.Models.Order
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edycja</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Zamówienie</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.When)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.When)
+            @Html.ValidationMessageFor(model => model.When)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amout)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amout)
+            @Html.ValidationMessageFor(model => model.Amout)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cost)
+            @Html.ValidationMessageFor(model => model.Cost)
+        </div>
+
+     
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

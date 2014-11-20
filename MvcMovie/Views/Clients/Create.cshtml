@@ -1,0 +1,76 @@
+﻿@model MvcMovie.Models.Client
+
+@{
+    ViewBag.Title = "Tworzenie klienta";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Client</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Surnname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Surnname)
+            @Html.ValidationMessageFor(model => model.Surnname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TelephoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TelephoneNumber)
+            @Html.ValidationMessageFor(model => model.TelephoneNumber, "Nie poprawny numer telefonu")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastBoughtTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastBoughtTime)
+            @Html.ValidationMessageFor(model => model.LastBoughtTime,"Nie poprawny format daty!")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastBoughtAmountInTon)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastBoughtAmountInTon)
+            @Html.ValidationMessageFor(model => model.LastBoughtAmountInTon, "Nie poprawna wartość. Podaj ilość w tonach.")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SmsTemplate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SmsTemplate)
+            @Html.ValidationMessageFor(model => model.SmsTemplate)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

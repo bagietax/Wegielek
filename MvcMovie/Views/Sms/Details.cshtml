@@ -1,0 +1,50 @@
+﻿@model MvcMovie.Models.Sms
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Sms</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.To)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.To)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.From)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.From)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Text)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Text)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.When)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.When)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsDelivred)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsDelivred)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SmsID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

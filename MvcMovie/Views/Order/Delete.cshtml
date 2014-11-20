@@ -1,0 +1,47 @@
+﻿@model MvcMovie.Models.Order
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuwanie</h2>
+
+<h3>Jesteś pewny?</h3>
+<fieldset>
+    <legend>Zamówienie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.When)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.When)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amout)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amout)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Client.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Client.Name)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

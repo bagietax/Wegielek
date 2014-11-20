@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "GetAvaibleSmsCount";
+}
+@{
+ 
+    var pln = (double) ViewData["AvaiblePLN"];
+    var errorMsg = (string) ViewData["ErrorMessage"];
+    
+}
+@if (String.IsNullOrEmpty(errorMsg))
+{
+    <h2>Dostępne fundusze @pln PLN</h2>
+    <h3>Wiadomośći ECO: @(Math.Round(pln/0.07,0)) <br/>
+        Wiadomośći PRO: @(Math.Round(pln/0.17,0))
+    </h3><br/>
+}
+else
+{
+    <h2 style="color: red">@errorMsg</h2>
+}
+
+

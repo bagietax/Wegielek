@@ -1,0 +1,58 @@
+﻿@model MvcMovie.Models.Order
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Utwórz</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Zamówenia</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.When)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.When)
+            @Html.ValidationMessageFor(model => model.When)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amout)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amout)
+            @Html.ValidationMessageFor(model => model.Amout)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cost)
+            @Html.ValidationMessageFor(model => model.Cost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Client, "Klient")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=>model.ClientID,  ViewData["Clients"] as List<SelectListItem>)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

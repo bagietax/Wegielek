@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcMovie.Models.Order>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Wszystkie</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.When)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amout)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.When)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.FullName)
+            </td>
+            <td class="edit-button">
+                @Html.ActionLink("Edycja", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Usuwanie", "Delete", new { id=item.ID }) |
+                @Html.ActionLink("Klient", "Details","Clients", new { id=item.ClientID },null)
+            </td>
+        </tr>
+    }
+
+</table>
+    <p>
+    @Html.ActionLink("Utwórz nowe", "Create")
+</p>

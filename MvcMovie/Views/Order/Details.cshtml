@@ -1,0 +1,43 @@
+﻿@model MvcMovie.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Szczegóły</h2>
+
+<fieldset>
+    <legend>Zamówienie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.When)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.When)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amout)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amout)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Client.FullName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Client.FullName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edycja", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>

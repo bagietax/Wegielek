@@ -1,0 +1,60 @@
+﻿@model MvcMovie.Models.Client
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+<fieldset>
+    <legend>Klient</legend>
+    <div class="client-details">
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Surnname)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Surnname)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.TelephoneNumber)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TelephoneNumber)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.LastBoughtTime)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastBoughtTime)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.LastBoughtAmountInTon)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastBoughtAmountInTon)
+        </div>
+    </div>
+    <div class="client-details">
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.SmsTemplate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayTextFor(model => model.SmsTemplate)
+        </div>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edycja", "Edit", new { id = Model.ClientID }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>

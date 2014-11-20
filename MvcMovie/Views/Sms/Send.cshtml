@@ -1,0 +1,8 @@
+﻿@if ((bool)ViewData["IsSmsSended"])
+{
+    <div>Wysłano</div>
+}
+else
+{
+    @Html.ActionLink("Wystąpił błąd","Index","Sms");
+}

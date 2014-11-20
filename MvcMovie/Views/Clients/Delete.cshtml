@@ -1,0 +1,61 @@
+﻿@model MvcMovie.Models.Client
+
+@{
+    ViewBag.Title = "Usuwanie";
+}
+
+<h2>Usuwanie</h2>
+
+<h3>Jesteś pewny?</h3>
+<fieldset>
+    <legend>Klient</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Surnname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surnname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TelephoneNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TelephoneNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastBoughtTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastBoughtTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastBoughtAmountInTon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastBoughtAmountInTon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SmsTemplate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SmsTemplate)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Powrót do listy", "Index")
+    </p>
+}

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MvcMovie.Models.Sms>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+ @Html.Action("GetAvaibleSmsCount") 
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.When)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDelivred)
+        </th>
+        <th>
+              @Html.DisplayNameFor(model => model.ErrorMessage)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.To)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.From)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.When)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDelivred)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ErrorMessage)
+        </td>
+    </tr>
+}
+
+</table>

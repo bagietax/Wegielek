@@ -1,0 +1,36 @@
+﻿@model MvcMovie.Models.SmsSenderSettings
+
+@{
+    ViewBag.Title = "Ustawienia SMS Api";
+}
+
+
+@using (Html.BeginForm("Create","SmsSenderSettings")) {
+
+    <fieldset>
+        <legend>Sms</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Login)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Login)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sender)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sender)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}

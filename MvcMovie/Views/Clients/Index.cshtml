@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Wszyscy Klienci";
+}
+
+
+<h2>Wszyscy klienci</h2>
+
+<h3>Znajdź: @Html.Editor("FilterClient")</h3>
+<div id="Clients">
+    @Html.Action("ShowClients")
+</div>
+<p>
+    @Html.ActionLink("Utwórz", "Create")
+</p>
+
+<script>
+    $("#FilterClient").on('input', function (e) {
+        $("#Clients").backgroundColor = '#666';
+        $("#Clients").transparent = 0.8;
+        $.get( "/Clients/ShowClients", { filter: this.value }, function (data) {
+            $("#Clients").html(data);
+        });
+    });
+</script>
+
+

@@ -1,0 +1,114 @@
+﻿@using MvcMovie.Controllers
+@model IEnumerable<MvcMovie.Models.Client>
+
+@if (Model.Count() == 0)
+{
+    <p>
+        Brak rekordów.
+    </p>
+}
+else
+{
+    <table id=""style="">
+        <tr>
+            <th style="white-space: nowrap;">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th style="white-space: nowrap;">
+                @Html.DisplayNameFor(model => model.Surnname)
+            </th>
+            <th style="white-space: nowrap;">
+                @Html.DisplayNameFor(model => model.TelephoneNumber)
+            </th>
+            <th style="white-space: nowrap;">
+                @Html.DisplayNameFor(model => model.LastBoughtTime)
+            </th>
+            <th style="white-space: nowrap;">
+                @Html.DisplayNameFor(model => model.LastBoughtAmountInTon)
+            </th>
+            <th style="width: 300px">
+                @Html.DisplayNameFor(model => model.SmsTemplate)
+            </th >
+            <th style="white-space: nowrap;">
+                @Html.DisplayNameFor(model => model.IsInformed)
+            </th>
+            <th>
+                Edycja
+            </th>
+             <th >
+                SMS
+            </th>
+        </tr>
+        @{
+            int oddRow = 0;
+            string backGroundColor;
+        }
+        @foreach (var item in Model)
+        {
+            oddRow++;
+                 if (oddRow%2 == 0)
+                 {
+                     backGroundColor = "lightslategrey";
+                 }
+                 else
+                 {
+                     backGroundColor = "lightgray";
+                 }
+             
+                      
+            <tr style="background: @backGroundColor " >
+                <td style="width: 100px">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="width: 100px">
+                    @Html.DisplayFor(modelItem => item.Surnname)
+                </td>
+                <td style="width: 100px">
+                    @Html.DisplayFor(modelItem => item.TelephoneNumber)
+                </td>
+                <td style="width: 100px">
+                    @Html.DisplayFor(modelItem => item.LastBoughtTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastBoughtAmountInTon)
+                </td>
+                <td style="width: 300px" >
+
+                    <div id="@(item.ClientID)Sms" title="@item.SmsTemplate" style="width: 300px">
+                        @if (item.SmsTemplate.Length > 100)
+                        {
+                            @Html.DisplayFor(modelItem => item.SmsTemplateShort);
+                        }
+                        else
+                        {
+                             @Html.DisplayFor(modelItem => item.SmsTemplate);
+                        }
+                            
+                    </div>
+                    @if (@item.SmsTemplate != null && @item.SmsTemplate.Length > 100)
+                    {
+                        <a onclick=" divBox = $('#@(item.ClientID)Sms')[0];if (divBox.innerText.length > 101) { this.innerText = 'Rozwiń mnie';divBox.innerText = '@item.SmsTemplate'.substring(0, 100);} else { divBox.innerText = '@item.SmsTemplate';this.innerText = 'Zwiń';} ">Rozwiń</a>
+                    }
+                </td>
+                <td style="white-space: nowrap;">
+                    @Html.DisplayFor(modelItem => item.IsInformed)
+                </td>
+                <td style="white-space: nowrap;" class="edit-button">
+                    @Html.ActionLink("Edycja", "Edit", new {id = item.ClientID}) |
+                    @Html.ActionLink("Szczegóły", "Details", new {id = item.ClientID}) |
+                    @Html.ActionLink("Usuń", "Delete", new {id = item.ClientID}) |
+                 
+                </td>
+                <td id="smsStatus@(item.ClientID)"> @Ajax.ActionLink("Wyslij sms ", "Send","Sms", new {id = item.ClientID},
+                        new AjaxOptions
+                        {
+                            HttpMethod = "GET",
+                            UpdateTargetId = "smsStatus" +item.ClientID,
+                            LoadingElementId = "Wysyłanie sms",
+                            InsertionMode = InsertionMode.Replace
+                        })</td>
+            </tr>
+        }
+
+    </table>
+}
